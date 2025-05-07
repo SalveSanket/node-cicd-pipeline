@@ -1,0 +1,88 @@
+# --------------------------------
+# Node.js
+# --------------------------------
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+dist/
+build/
+.env
+.env.*.local
+coverage/
+*.log
+.cache/
+
+# --------------------------------
+# Terraform
+# --------------------------------
+*.tfstate
+*.tfstate.*
+.terraform/
+.terraform.lock.hcl
+crash.log
+*.tfvars
+*.tfvars.json
+override.tf
+override.tf.json
+*.backup
+*.tfplan
+
+# --------------------------------
+# Jenkins
+# --------------------------------
+*.jenkins*
+*.xml
+secrets/
+config-history/
+jobs/*/workspace/
+jobs/*/lastStable/
+jobs/*/lastSuccessful/
+workspace/
+logs/
+war/
+init.groovy.d/
+
+# --------------------------------
+# AWS CLI / SDK / Secrets
+# --------------------------------
+.aws/
+*.pem
+*.key
+*.crt
+*.csr
+*.p12
+*.jks
+*.awscredentials
+*.awsprofile
+*.json  # Be careful—only ignore if you're storing secrets in JSON files
+
+# Prevent accidental uploads of cloudformation/creds/etc.
+cloudformation-export.json
+aws-exports.js
+cdk.out/
+
+# --------------------------------
+# OS-specific
+# --------------------------------
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Icon?
+Desktop.ini
+
+# --------------------------------
+# IDEs/editors
+# --------------------------------
+.vscode/
+.idea/
+*.sublime-workspace
+*.sublime-project
+
+# --------------------------------
+# Temporary files
+# --------------------------------
+tmp/
+temp/
+*.swp
+*.swo
