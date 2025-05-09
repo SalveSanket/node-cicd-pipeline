@@ -86,3 +86,12 @@ tmp/
 temp/
 *.swp
 *.swo
+
+# --------------------------------
+# SSH Keys (Sensitive)
+# --------------------------------
+/S3/terraform/keys/
+*.pem
+*.pub
+*.key
+*.rsa
