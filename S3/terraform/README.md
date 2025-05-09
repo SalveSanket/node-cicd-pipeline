@@ -75,8 +75,8 @@ After apply, you will see:
 
 You can access the keys using:
 
-- Private Key: `s3://infra-secure-key-store/ssh/ssh-jenkins`
-- Public Key: `s3://infra-secure-key-store/ssh/ssh-jenkins.pub`
+- Private Key: `s3://infra-secure-key-store/ssh-jenkins/ssh-jenkins`
+- Public Key: `s3://infra-secure-key-store/ssh-jenkins/ssh-jenkins.pub`
 
 These values are also available as Terraform outputs.
 
