@@ -80,7 +80,7 @@ resource "aws_security_group" "jenkins_sg" {
 # Create an SSH key pair for accessing the Jenkins server
 resource "aws_key_pair" "jenkins_key" {
   key_name   = var.key_pair_name
-  public_key = file(var.public_key_path)
+  public_key = file(abspath(var.public_key_path))
 }
 
 # Create an EC2 instance for Jenkins server
