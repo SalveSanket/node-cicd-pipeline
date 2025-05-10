@@ -1,36 +1,38 @@
-# --------------------------------
+# ----------------------------
 # Node.js
-# --------------------------------
+# ----------------------------
 node_modules/
+dist/
+build/
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-dist/
-build/
+package-lock.json
 .env
 .env.*.local
 coverage/
-*.log
 .cache/
+logs/
+*.log
 
-# --------------------------------
+# ----------------------------
 # Terraform
-# --------------------------------
+# ----------------------------
 *.tfstate
 *.tfstate.*
 .terraform/
 .terraform.lock.hcl
-crash.log
 *.tfvars
 *.tfvars.json
 override.tf
 override.tf.json
 *.backup
 *.tfplan
+crash.log
 
-# --------------------------------
+# ----------------------------
 # Jenkins
-# --------------------------------
+# ----------------------------
 *.jenkins*
 *.xml
 secrets/
@@ -43,9 +45,9 @@ logs/
 war/
 init.groovy.d/
 
-# --------------------------------
-# AWS CLI / SDK / Secrets
-# --------------------------------
+# ----------------------------
+# AWS / SSH Keys / Secrets
+# ----------------------------
 .aws/
 *.pem
 *.key
@@ -55,43 +57,57 @@ init.groovy.d/
 *.jks
 *.awscredentials
 *.awsprofile
-*.json  # Be careful—only ignore if you're storing secrets in JSON files
 
-# Prevent accidental uploads of cloudformation/creds/etc.
+# Downloaded SSH key directory
+downloaded_keys/
+
+# Prevent secret config leaks
 cloudformation-export.json
 aws-exports.js
 cdk.out/
 
-# --------------------------------
-# OS-specific
-# --------------------------------
-.DS_Store
-Thumbs.db
-ehthumbs.db
-Icon?
-Desktop.ini
+# ----------------------------
+# Python
+# ----------------------------
+__pycache__/
+*.py[cod]
+*.pyo
+*.egg-info/
+*.egg
+.venv/
+.env/
+pip-log.txt
 
-# --------------------------------
-# IDEs/editors
-# --------------------------------
+# ----------------------------
+# macOS
+# ----------------------------
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# ----------------------------
+# VSCode / JetBrains / IDEs
+# ----------------------------
 .vscode/
 .idea/
 *.sublime-workspace
 *.sublime-project
 
-# --------------------------------
+# ----------------------------
 # Temporary files
-# --------------------------------
+# ----------------------------
 tmp/
 temp/
 *.swp
 *.swo
+*.bak
+*.tmp
 
-# --------------------------------
-# SSH Keys (Sensitive)
-# --------------------------------
+# ----------------------------
 /S3/terraform/keys/
 *.pem
 *.pub
 *.key
 *.rsa
+
+

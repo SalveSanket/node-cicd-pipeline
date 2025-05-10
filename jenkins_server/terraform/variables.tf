@@ -34,11 +34,11 @@ variable "key_pair_name" {
 }
 
 variable "public_key_path" {
-  description = "Path to the SSH public key"
-  default     = "~/.ssh/jenkinsServerKey.pub"
+  description = "Path to the SSH public key stored in S3"
+  type        = string
 }
 
 variable "private_key_file" {
-  description = "Path to the private SSH key used for EC2 connection"
+  description = "Path to the private SSH key stored in S3"
   type        = string
 }

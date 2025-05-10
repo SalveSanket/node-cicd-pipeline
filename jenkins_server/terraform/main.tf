@@ -78,7 +78,6 @@ resource "aws_security_group" "jenkins_sg" {
 }
 
 # Create an SSH key pair for accessing the Jenkins server
-# Note: Ensure the public key file exists at the specified path
 resource "aws_key_pair" "jenkins_key" {
   key_name   = var.key_pair_name
   public_key = file(var.public_key_path)
