@@ -91,6 +91,8 @@ resource "aws_instance" "jenkins_instance" {
   vpc_security_group_ids = [aws_security_group.jenkins_sg.id]
   key_name               = aws_key_pair.jenkins_key.key_name
 
+  user_data = templatefile("${path.module}/bootfiles/userdata.tpl", {})
+
   tags = {
     Name = "Jenkins Server"
   }
