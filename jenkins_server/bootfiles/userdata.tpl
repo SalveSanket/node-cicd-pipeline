@@ -12,6 +12,15 @@ sudo apt-get upgrade -y
 echo "Installing required dependencies..."
 sudo apt-get install -y ca-certificates curl gnupg
 
+echo "Installing Node.js (v18) and npm..."
+sudo apt-get install -y build-essential
+curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash -
+sudo apt-get install -y nodejs
+
+echo "Verifying Node.js and npm installation..."
+node -v
+npm -v
+
 # Add Jenkins key and repository
 echo "Adding Jenkins GPG key and repository..."
 sudo mkdir -p /etc/apt/keyrings
