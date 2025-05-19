@@ -22,3 +22,19 @@ resource "aws_s3_object" "public_key" {
   etag                   = filemd5(var.public_key_path)
   server_side_encryption = "AES256"
 }
+
+resource "aws_s3_object" "private_key_sonarqube" {
+  bucket                 = aws_s3_bucket.ssh_key_bucket.id
+  key                    = "ssh-sonarqube/ssh-sonarqube"
+  source                 = var.private_key_path_sonarqube
+  etag                   = filemd5(var.private_key_path_sonarqube)
+  server_side_encryption = "AES256"
+}
+
+resource "aws_s3_object" "public_key_sonarqube" {
+  bucket                 = aws_s3_bucket.ssh_key_bucket.id
+  key                    = "ssh-sonarqube/ssh-sonarqube.pub"
+  source                 = var.public_key_path_sonarqube
+  etag                   = filemd5(var.public_key_path_sonarqube)
+  server_side_encryption = "AES256"
+}

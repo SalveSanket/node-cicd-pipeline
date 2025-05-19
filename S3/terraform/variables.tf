@@ -20,3 +20,15 @@ variable "public_key_path" {
   type        = string
   default     = "/Users/sanketsalve/Documents/devops_projects/application-nodejs/S3/terraform/keys/ssh-jenkins.pub"
 }
+
+variable "private_key_path_sonarqube" {
+  description = "Local file path to the SSH private key for SonarQube"
+  type        = string
+  default     = "/Users/sanketsalve/Documents/devops_projects/application-nodejs/S3/terraform/keys/sonarqube-key"
+}
+
+variable "public_key_path_sonarqube" {
+  description = "Local file path to the SSH public key for SonarQube"
+  type        = string
+  default     = "/Users/sanketsalve/Documents/devops_projects/application-nodejs/S3/terraform/keys/sonarqube-key.pub"
+}
