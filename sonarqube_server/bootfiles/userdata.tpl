@@ -19,10 +19,10 @@ sudo useradd -m -d /opt/sonarqube -r -s /bin/bash sonar || true
 # -------------------------------------------------------
 echo "📦 Downloading and extracting SonarQube..."
 cd /opt
-sudo wget -O sonarqube.zip https://binaries.sonarsource.com/Distribution/sonarqube/sonarqube-10.4.1.88267.zip
+sudo wget -O sonarqube.zip https://binaries.sonarsource.com/Distribution/sonarqube/sonarqube-25.5.0.107428.zip
 sudo unzip -o sonarqube.zip -d /opt
 sudo rm -f sonarqube.zip
-sudo mv /opt/sonarqube-10.4.1.88267 /opt/sonarqube
+sudo mv /opt/sonarqube-25.5.0.107428 /opt/sonarqube
 sudo chown -R sonar:sonar /opt/sonarqube
 sudo chmod +x /opt/sonarqube/bin/linux-x86-64/sonar.sh
 
