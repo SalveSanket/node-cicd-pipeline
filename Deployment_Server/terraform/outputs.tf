@@ -1,31 +1,23 @@
 # -------------------------------------------------------
 # Output: Public IP of the EC2 Instance
 # -------------------------------------------------------
-output "sonarqube_instance_public_ip" {
-  description = "The public IP address of the SonarQube EC2 instance"
-  value       = aws_instance.sonarqube.public_ip
+output "deployment_server_public_ip" {
+  description = "The public IP address of the Deployment Server EC2 instance"
+  value       = aws_instance.DeploymentServer.public_ip
 }
 
 # -------------------------------------------------------
-# Output: SonarQube Web URL
+# Output: SSH Access Command
 # -------------------------------------------------------
-output "sonarqube_web_url" {
-  description = "Access SonarQube Web UI in browser"
-  value       = "http://${aws_instance.sonarqube.public_ip}:9000"
+output "deployment_server_ssh_command" {
+  description = "SSH command to connect to the Deployment Server instance"
+  value       = "ssh -i ${var.private_key_file} ubuntu@${aws_instance.DeploymentServer.public_ip}"
 }
 
 # -------------------------------------------------------
-# Output: SSH Connection Command
+# Output: EC2 Key Pair Name
 # -------------------------------------------------------
-output "ssh_access_command" {
-  description = "SSH command to connect to the SonarQube server"
-  value       = "ssh -i ${var.private_key_file} ubuntu@${aws_instance.sonarqube.public_ip}"
-}
-
-# -------------------------------------------------------
-# Output: Key Pair Used
-# -------------------------------------------------------
-output "key_pair_name" {
-  description = "Name of the AWS EC2 key pair used"
-  value       = aws_key_pair.sonarqube.key_name
+output "deployment_server_key_pair_name" {
+  description = "The name of the AWS EC2 key pair used for Deployment Server"
+  value       = aws_key_pair.DeploymentServer.key_name
 }
