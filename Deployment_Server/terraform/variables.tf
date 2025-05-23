@@ -36,9 +36,11 @@ variable "key_pair_name" {
 variable "public_key_path" {
   description = "Path to the SSH public key stored"
   type        = string
+  default = "../keys/Deployment-Server-key.pub"
 }
 
 variable "private_key_file" {
   description = "Path to the private SSH key stored"
   type        = string
+  default = "../keys/Deployment-Server-key"
 }
