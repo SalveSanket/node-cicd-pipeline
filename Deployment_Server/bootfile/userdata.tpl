@@ -1,47 +1,42 @@
-
-
 #!/bin/bash
 
 set -euo pipefail
-exec > /var/log/user-data.log 2>&1
+exec > >(tee /var/log/user-data.log|logger -t user-data -s 2>/dev/console) 2>&1
 
-echo "===== Updating system packages ====="
+echo "=== [1/7] Updating system packages ==="
 apt-get update -y
 apt-get upgrade -y
 
-echo "===== Installing dependencies ====="
+echo "=== [2/7] Installing required dependencies ==="
 apt-get install -y \
-    apt-transport-https \
-    ca-certificates \
-    curl \
-    gnupg \
-    lsb-release \
-    software-properties-common
+  ca-certificates \
+  curl \
+  gnupg \
+  lsb-release \
+  software-properties-common \
+  apt-transport-https
 
-echo "===== Adding Docker’s official GPG key ====="
+echo "=== [3/7] Adding Docker’s official GPG key ==="
 install -m 0755 -d /etc/apt/keyrings
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | \
-    gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+  gpg --dearmor -o /etc/apt/keyrings/docker.gpg
 chmod a+r /etc/apt/keyrings/docker.gpg
 
-echo "===== Setting up Docker repository ====="
+echo "=== [4/7] Setting up Docker repository ==="
 echo \
-  "deb [arch=$(dpkg --print-architecture) \
-  signed-by=/etc/apt/keyrings/docker.gpg] \
+  "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] \
   https://download.docker.com/linux/ubuntu \
   $(lsb_release -cs) stable" | \
   tee /etc/apt/sources.list.d/docker.list > /dev/null
 
-echo "===== Installing Docker Engine ====="
+echo "=== [5/7] Installing Docker Engine & Plugins ==="
 apt-get update -y
 apt-get install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 
-echo "===== Enabling Docker service ====="
+echo "=== [6/7] Enabling Docker service & adding user ==="
 systemctl enable docker
 systemctl start docker
-
-echo "===== Adding 'ubuntu' user to docker group ====="
 usermod -aG docker ubuntu
 
-echo "===== Docker installation complete ====="
-docker --version
+echo "=== [7/7] Docker installation verification ==="
+docker --version && echo "✅ Docker installed successfully" || echo "❌ Docker installation failed"

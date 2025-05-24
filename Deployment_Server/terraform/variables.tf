@@ -30,7 +30,7 @@ variable "instance_type" {
 
 variable "key_pair_name" {
   description = "Name of the SSH key pair"
-  default     = "sonarqube-key"
+  default     = "Delpoyment-Server-key"
 }
 
 variable "public_key_path" {
