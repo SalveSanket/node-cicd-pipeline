@@ -53,7 +53,7 @@ resource "aws_route_table_association" "public_assoc" {
 # Security Group for Deployment Server
 resource "aws_security_group" "deployment_server_sg" {
   name        = "deployment-server-sg"
-  description = "Allow SSH, HTTP, and App Port"
+  description = "Allow SSH and HTTP"
   vpc_id      = aws_vpc.main.id
 
   ingress {
@@ -71,7 +71,7 @@ resource "aws_security_group" "deployment_server_sg" {
     protocol    = "tcp"
     cidr_blocks = [var.http_ingress_cidr]
   }
-
+  
   ingress {
     description = "App Port"
     from_port   = 3000
